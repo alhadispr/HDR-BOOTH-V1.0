@@ -33,4 +33,3 @@ jobs:
             artifacts/HDR-BOOTH-win-x64.zip
           if-no-files-found: error
           retention-days: 14
-ddxxd
