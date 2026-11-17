@@ -1,0 +1,16 @@
+<Window x:Class="HdrBooth.Views.EditEventWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit Acara" Width="440" Height="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Background="#F6F7F9">
+    <Border Background="White" CornerRadius="12" Margin="16" Padding="24">
+        <StackPanel>
+            <TextBlock Text="Edit Acara" FontSize="22" FontWeight="Bold" Foreground="#252525" Margin="0,0,0,20"/>
+            <TextBlock Text="Nama acara" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <TextBox x:Name="NameBox" Height="36" Padding="8"/>
+            <TextBlock Text="Tanggal acara (opsional)" FontWeight="SemiBold" Margin="0,16,0,6"/>
+            <DatePicker x:Name="DateBox" Height="34"/>
+            <DockPanel Margin="0,24,0,0">
+                <Button Content="Batal" DockPanel.Dock="Right" Width="90" Click="Cancel_Click" Background="#EEEEEE" Foreground="#333" Margin="8,0,0,0"/>
+                <Button Content="Simpan" DockPanel.Dock="Right" Width="100" Click="Save_Click" Background="#D92D3A" Foreground="White"/>
+            </DockPanel>
+        </StackPanel>
+    </Border>
+</Window>
