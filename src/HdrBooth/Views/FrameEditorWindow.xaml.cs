@@ -93,13 +93,20 @@ public partial class FrameEditorWindow : Window
                 Height = Math.Max(0, h * Math.Clamp(slot.Height, 0, 100) / 100),
                 Stroke = new SolidColorBrush(System.Windows.Media.Color.FromRgb(217, 45, 58)),
                 StrokeThickness = 2,
-                Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(35, 217, 45, 58)),
+                Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(35, 217, 45, 58)),
                 StrokeDashArray = new DoubleCollection { 4, 2 }
             };
             Canvas.SetLeft(rect, w * Math.Clamp(slot.X, 0, 100) / 100);
             Canvas.SetTop(rect, h * Math.Clamp(slot.Y, 0, 100) / 100);
             SlotOverlay.Children.Add(rect);
-            var label = new TextBlock { Text = slot.Name, Foreground = Brushes.White, Background = new SolidColorBrush(Color.FromRgb(190, 30, 45)), FontSize = 11, Padding = new Thickness(3, 1, 3, 1) };
+            var label = new System.Windows.Controls.TextBlock
+{
+    Text = slot.Name,
+    Foreground = System.Windows.Media.Brushes.White,
+    Background = new System.Windows.Media.SolidColorBrush(
+        System.Windows.Media.Color.FromRgb(190, 30, 45)),
+    FontSize = 12
+};
             Canvas.SetLeft(label, w * Math.Clamp(slot.X, 0, 100) / 100);
             Canvas.SetTop(label, h * Math.Clamp(slot.Y, 0, 100) / 100);
             SlotOverlay.Children.Add(label);
@@ -108,7 +115,7 @@ public partial class FrameEditorWindow : Window
 
     private void ChooseFrame_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFileDialog { Title = "Pilih PNG frame transparan", Filter = "PNG Image (*.png)|*.png", CheckFileExists = true };
+        var dialog = new Microsoft.Win32.OpenFileDialog { Title = "Pilih PNG frame transparan", Filter = "PNG Image (*.png)|*.png", CheckFileExists = true };
         if (dialog.ShowDialog(this) == true)
         {
             _template.OverlayImagePath = dialog.FileName;
