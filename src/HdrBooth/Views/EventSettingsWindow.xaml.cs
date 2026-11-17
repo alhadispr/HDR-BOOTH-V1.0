@@ -1,5 +1,4 @@
-using HdrBooth.Services;
-using HdrBooth.Services.Camera;
+using HdrBooth.Services;\nusing HdrBooth.Services.Camera;
 using System.Windows;
 using System.Windows.Controls;
 using HdrBooth.Models;

@@ -12,9 +12,9 @@
                     <TextBlock Text="PHOTOBOOTH MANAGEMENT" FontSize="9" Foreground="#858585" Margin="1,5,0,0"/>
                 </StackPanel>
                 <StackPanel Margin="14,0">
-                    <Button Content="▦   Dashboard Acara" HorizontalContentAlignment="Left" Background="#FCEBED" Foreground="#D92D3A" Margin="0,0,0,7"/>
-                    <Button Content="▧   Galeri" HorizontalContentAlignment="Left" Background="Transparent" Foreground="#444" Margin="0,0,0,7"/>
-                    <Button Content="⚙   Pengaturan" HorizontalContentAlignment="Left" Background="Transparent" Foreground="#444"/>
+                    <Button Content="▦   Dashboard Acara" HorizontalContentAlignment="Left" Background="#FCEBED" Foreground="#D92D3A" Margin="0,0,0,7" Click="DashboardNav_Click"/>
+                    <Button Content="▧   Galeri Event" HorizontalContentAlignment="Left" Background="Transparent" Foreground="#444" Margin="0,0,0,7" Click="GalleryNav_Click"/>
+                    <Button Content="⚙   Pengaturan Global" HorizontalContentAlignment="Left" Background="Transparent" Foreground="#444" Click="GlobalSettingsNav_Click"/>
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" Margin="24">
                     <Border Height="1" Background="#ECEDEF" Margin="0,0,0,14"/>
@@ -50,7 +50,8 @@
                     </StackPanel>
                     <DataGrid x:Name="EventsGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
                               HeadersVisibility="Column" GridLinesVisibility="Horizontal" BorderThickness="0"
-                              SelectionMode="Single" SelectionChanged="EventsGrid_SelectionChanged">
+                              SelectionMode="Single" SelectionChanged="EventsGrid_SelectionChanged"
+                              MouseDoubleClick="EventsGrid_MouseDoubleClick">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="NAMA ACARA" Binding="{Binding Name}" Width="2*"/>
                             <DataGridTextColumn Header="TANGGAL ACARA" Binding="{Binding EventDate, StringFormat={}{0:dd MMM yyyy}}" Width="*"/>

@@ -176,3 +176,10 @@
 - [ ] Printer and LAN QR test.
 - [ ] Artivive Bridge import, publish, and phone scan test.
 - [ ] Release EXE after test issues are resolved.
+
+
+## v0.26
+- Perbaikan navigasi sidebar.
+- Galeri hanya dibuka setelah memilih event.
+- Pengaturan Global dipisah dari profil event dan disimpan di global-settings.json.
+- Double-click event membuka pengaturan event.

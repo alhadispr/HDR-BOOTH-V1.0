@@ -27,6 +27,45 @@ public partial class MainWindow : Window
         ActiveEventText.Text = _events.FirstOrDefault(e => e.IsActive)?.Name ?? "Belum ada";
     }
 
+
+    private async void DashboardNav_Click(object sender, RoutedEventArgs e)
+    {
+        await RefreshAsync();
+    }
+
+    private void GalleryNav_Click(object sender, RoutedEventArgs e)
+    {
+        if (EventsGrid.SelectedItem is not EventProfile selected)
+        {
+            MessageBox.Show("Pilih event terlebih dahulu. Galeri ditampilkan berdasarkan event yang dipilih.",
+                "Galeri HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
+            return;
+        }
+        new GalleryWindow(selected, _store) { Owner = this }.ShowDialog();
+    }
+
+    private void GlobalSettingsNav_Click(object sender, RoutedEventArgs e)
+    {
+        new GlobalSettingsWindow() { Owner = this }.ShowDialog();
+    }
+
+    private void EventsGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        if (EventsGrid.SelectedItem is EventProfile selected)
+        {
+            var dialog = new EventSettingsWindow(selected) { Owner = this };
+            if (dialog.ShowDialog() == true)
+                _ = SaveSelectedEventAsync(selected);
+        }
+    }
+
+    private async Task SaveSelectedEventAsync(EventProfile selected)
+    {
+        await _store.SaveAsync(selected);
+        await RefreshAsync();
+        SelectedEventText.Text = $"Pengaturan tersimpan: {selected.Name}";
+    }
+
     private async void CreateEvent_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new Window { Title = "Buat Acara Baru", Width = 420, Height = 210,
