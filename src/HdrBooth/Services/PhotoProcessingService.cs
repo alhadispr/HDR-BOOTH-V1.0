@@ -45,7 +45,7 @@ public sealed class PhotoProcessingService
         var visual = new DrawingVisual();
         using (var dc = visual.RenderOpen())
         {
-            dc.DrawRectangle(Brushes.White, null, new Rect(0, 0, width, height));
+            dc.DrawRectangle(System.Windows.Media.Brushes.White, null, new Rect(0, 0, width, height));
             for (int i = 0; i < template.Slots.Count; i++)
             {
                 if (i >= photoPaths.Count) break;
