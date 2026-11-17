@@ -65,20 +65,7 @@ public sealed class DemoCameraProvider : ICameraProvider
         28,
         28);
 }
-        {
-            dc.DrawRectangle(new SolidColorBrush(Color.FromRgb(35, 39, 48)), null, new Rect(0, 0, width, height));
-            dc.DrawRectangle(new SolidColorBrush(Color.FromRgb(217, 45, 58)), null, new Rect(0, 0, width, 12));
-            var title = new FormattedText("HDR BOOTH • DEMO CAPTURE",
-                CultureInfo.GetCultureInfo("id-ID"), FlowDirection.LeftToRight,
-                new Typeface("Segoe UI"), 42, Brushes.White, 1.0);
-            dc.DrawText(title, new Point(60, 260));
-            var subtitle = new FormattedText(DateTime.Now.ToString("dd MMMM yyyy • HH:mm:ss", CultureInfo.GetCultureInfo("id-ID")),
-                CultureInfo.GetCultureInfo("id-ID"), FlowDirection.LeftToRight,
-                new Typeface("Segoe UI"), 24, Brushes.LightGray, 1.0);
-            dc.DrawText(subtitle, new Point(64, 325));
-            dc.DrawEllipse(null, new Pen(new SolidColorBrush(Color.FromRgb(217,45,58)), 5),
-                new Point(width - 120, 90), 28, 28);
-        }
+        
         var bitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Pbgra32);
         bitmap.Render(visual);
         bitmap.Freeze();
