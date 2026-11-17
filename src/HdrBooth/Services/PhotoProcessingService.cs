@@ -101,7 +101,7 @@ public sealed class PhotoProcessingService
             var metadata = new BitmapMetadata("gif");
             metadata.SetQuery("/grctlext/Delay", (ushort)delayHundredths);
             metadata.SetQuery("/grctlext/Disposal", (byte)2);
-            encoder.Frames.Add(BitmapFrame.Create(frame, null, null, metadata));
+            encoder.Frames.Add(BitmapFrame.Create(frame, null, metadata, null));
         }
 
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outputPath))!);
