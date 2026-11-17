@@ -1,3 +1,8 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -23,7 +28,7 @@ public sealed class LocalShareServer : IDisposable
     {
         _files = files.Where(File.Exists)
             .Distinct(StringComparer.OrdinalIgnoreCase)
-            .ToDictionary(Path.GetFileName, p => p, StringComparer.OrdinalIgnoreCase);
+            .ToDictionary(p => Path.GetFileName(p) ?? Guid.NewGuid().ToString("N"), p => p, StringComparer.OrdinalIgnoreCase);
         if (_files.Count == 0) throw new InvalidOperationException("Belum ada file hasil yang bisa dibagikan.");
 
         _token = Convert.ToHexString(System.Security.Cryptography.RandomNumberGenerator.GetBytes(18)).ToLowerInvariant();

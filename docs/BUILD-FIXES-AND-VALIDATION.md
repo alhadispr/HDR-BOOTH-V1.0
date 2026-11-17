@@ -28,3 +28,10 @@ From the repository root on Windows with .NET 8 SDK installed:
 ```
 
 GitHub Actions can also be run from the Actions tab using the `Build HDR BOOTH (Windows)` workflow.
+
+## Perbaikan CI tambahan
+- Menambahkan global usings eksplisit untuk System.IO, LINQ, collections, threading, dan tasks.
+- Menambahkan NuGet.Config dengan nuget.org sebagai package source.
+- Memastikan PackageReference QRCoder 1.6.0 ada di project.
+- Menambahkan tahap `dotnet build --no-restore` setelah restore agar error compile terlihat sebelum publish.
+- Mengubah selector nama file pada LocalShareServer menjadi lambda eksplisit agar inferensi tipe nullable tidak ambigu.
