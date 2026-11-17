@@ -64,25 +64,29 @@ public partial class BoothDisplayWindow : Window
 
         for (int i = 1; i <= count; i++)
         {
-            var slot = new Border
-            {
-                Margin = new Thickness(4),
-                MinWidth = columns == 1 ? 82 : 74,
-                MinHeight = columns == 1 ? 68 : 88,
-                Background = Brushes.White,
-                BorderBrush = new SolidColorBrush(Color.FromRgb(225, 225, 228)),
-                BorderThickness = new Thickness(1),
-                CornerRadius = new CornerRadius(5),
-                Child = new TextBlock
-                {
-                    Text = $"FOTO {i}",
-                    Foreground = new SolidColorBrush(Color.FromRgb(150, 150, 155)),
-                    FontSize = 15,
-                    FontWeight = FontWeights.SemiBold,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center
-                }
-            };
+            var slot = new System.Windows.Controls.Border
+{
+    Margin = new System.Windows.Thickness(4),
+    MinWidth = columns == 1 ? 82 : 74,
+    MinHeight = columns == 1 ? 68 : 88,
+    Background = System.Windows.Media.Brushes.White,
+    BorderBrush = new System.Windows.Media.SolidColorBrush(
+        System.Windows.Media.Color.FromRgb(225, 225, 228)),
+    BorderThickness = new System.Windows.Thickness(1),
+    CornerRadius = new System.Windows.CornerRadius(5),
+    Child = new System.Windows.Controls.TextBlock
+    {
+        Text = $"FOTO {i}",
+        Foreground = new System.Windows.Media.SolidColorBrush(
+            System.Windows.Media.Color.FromRgb(150, 150, 155)),
+        FontSize = 15,
+        FontWeight = System.Windows.FontWeights.SemiBold,
+        HorizontalAlignment = System.Windows.HorizontalAlignment.Center,
+        VerticalAlignment = System.Windows.VerticalAlignment.Center
+    }
+};
+
+LayoutSlotsPanel.Children.Add(slot);
             LayoutSlotsPanel.Children.Add(slot);
         }
 
