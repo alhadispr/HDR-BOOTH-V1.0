@@ -1,3 +1,4 @@
+using System.IO;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
@@ -77,7 +78,7 @@ public partial class GlobalSettingsWindow : Window
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Pengaturan global gagal disimpan: {ex.Message}", "HDR BOOTH",
+            System.Windows.MessageBox.Show($"Pengaturan global gagal disimpan: {ex.Message}", "HDR BOOTH",
                 MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
