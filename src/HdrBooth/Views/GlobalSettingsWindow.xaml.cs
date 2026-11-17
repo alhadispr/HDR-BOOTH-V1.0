@@ -18,7 +18,7 @@ public sealed class GlobalAppSettings
 
 public partial class GlobalSettingsWindow : Window
 {
-    private readonly string _settingsPath = Path.Combine(
+    private readonly string _settingsPath = System.IO.Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
         "HDR-BOOTH", "global-settings.json");
     private readonly string _dataFolder = Path.Combine(
@@ -37,12 +37,12 @@ public partial class GlobalSettingsWindow : Window
         GlobalAppSettings settings = new();
         try
         {
-            if (File.Exists(_settingsPath))
-                settings = JsonSerializer.Deserialize<GlobalAppSettings>(File.ReadAllText(_settingsPath)) ?? new();
+            if (System.IO.File.Exists(_settingsPath))
+                settings = JsonSerializer.Deserialize<GlobalAppSettings>(System.IO.File.ReadAllText(_settingsPath)) ?? new();
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Pengaturan global belum dapat dibaca. Nilai default digunakan.\\n{ex.Message}",
+            System.Windows.MessageBox.Show($"Pengaturan global belum dapat dibaca. Nilai default digunakan.\\n{ex.Message}",
                 "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
         AppNameBox.Text = settings.AppName;
