@@ -35,7 +35,7 @@ public sealed class WindowsPrintService
         bitmap.EndInit();
         bitmap.Freeze();
 
-        var dialog = new PrintDialog { UserPageRangeEnabled = false };
+        var dialog = new System.Windows.Controls.PrintDialog. { UserPageRangeEnabled = false };
         if (!string.IsNullOrWhiteSpace(printerName))
         {
             using var server = new LocalPrintServer();
@@ -62,7 +62,7 @@ public sealed class WindowsPrintService
         var visual = new DrawingVisual();
         using (var dc = visual.RenderOpen())
         {
-            dc.DrawRectangle(Brushes.White, null, new Rect(0, 0, pageWidth, pageHeight));
+            dc.DrawRectangle(System.Windows.Media.Brushes.White, null, new Rect(0, 0, pageWidth, pageHeight));
             double scale = Math.Min(pageWidth / bitmap.PixelWidth, pageHeight / bitmap.PixelHeight);
             double w = bitmap.PixelWidth * scale;
             double h = bitmap.PixelHeight * scale;
