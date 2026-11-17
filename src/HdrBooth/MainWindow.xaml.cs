@@ -148,7 +148,11 @@ dialog.Content = panel;
     private async void ArchiveEvent_Click(object sender, RoutedEventArgs e)
     {
         if (EventsGrid.SelectedItem is not EventProfile selected) { System.Windows.MessageBox.Show("Pilih acara yang ingin diarsipkan.", "HDR BOOTH"); return; }
-        var answer = System.Windows.MessageBox.Show(($"Arsipkan event '{selected.Name}'? File foto tidak akan dihapus.", "Konfirmasi Arsip", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+        var answer = System.Windows.MessageBox.Show(
+    $"Arsipkan event '{selected.Name}'? File foto tidak akan dihapus.",
+    "Konfirmasi Arsip",
+    System.Windows.MessageBoxButton.YesNo,
+    System.Windows.MessageBoxImage.Warning);
         if (answer != MessageBoxResult.Yes) return;
         await _store.ArchiveAsync(selected); await RefreshAsync();
         SelectedEventText.Text = "Event berhasil diarsipkan. File tetap tersimpan.";
