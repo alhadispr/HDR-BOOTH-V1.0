@@ -178,7 +178,7 @@ dialog.Content = panel;
     {
         if (EventsGrid.SelectedItem is not EventProfile selected)
         {
-            MessageBox.Show("Pilih acara terlebih dahulu.", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
+            System.Windows.MessageBox.Show("Pilih acara terlebih dahulu.", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         await _store.SetActiveAsync(_events, selected);
@@ -191,7 +191,7 @@ dialog.Content = panel;
         var active = (await _store.LoadAsync()).FirstOrDefault(item => item.IsActive);
         if (active is null)
         {
-            MessageBox.Show("Aktifkan satu event terlebih dahulu sebelum membuka Booth Display.", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
+            System.Windows.MessageBox.Show("Aktifkan satu event terlebih dahulu sebelum membuka Booth Display.", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         new BoothDisplayWindow(active, _store).ShowDialog();
