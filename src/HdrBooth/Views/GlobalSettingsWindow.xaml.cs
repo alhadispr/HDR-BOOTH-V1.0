@@ -2,8 +2,6 @@ using System.IO;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
-using FormsFolderBrowserDialog = System.Windows.Forms.FolderBrowserDialog;
-using FormsDialogResult = System.Windows.Forms.DialogResult;
 using HdrBooth.Services;
 
 namespace HdrBooth.Views;
@@ -55,9 +53,13 @@ public partial class GlobalSettingsWindow : Window
 
     private void BrowseBackup_Click(object sender, RoutedEventArgs e)
     {
-        using var dialog = new FormsFolderBrowserDialog { Description = "Pilih folder untuk backup HDR BOOTH" };
-        if (dialog.ShowDialog() == FormsDialogResult.OK)
-            BackupFolderBox.Text = dialog.SelectedPath;
+        var dialog = new Microsoft.Win32.OpenFolderDialog
+        {
+            Title = "Pilih folder untuk backup HDR BOOTH",
+            Multiselect = false
+        };
+        if (dialog.ShowDialog(this) == true)
+            BackupFolderBox.Text = dialog.FolderName;
     }
 
     private void Save_Click(object sender, RoutedEventArgs e)

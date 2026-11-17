@@ -167,7 +167,6 @@ dialog.Content = panel;
     await _store.ArchiveAsync(selected);
     await RefreshAsync();
     SelectedEventText.Text = "Event berhasil diarsipkan. File tetap tersimpan.";
-}
     }
 
     private void SessionHistory_Click(object sender, RoutedEventArgs e)

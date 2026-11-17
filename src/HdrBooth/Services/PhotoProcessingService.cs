@@ -92,18 +92,17 @@ public sealed class PhotoProcessingService
     public string CreateAnimatedGif(IReadOnlyList<string> imagePaths, string outputPath, int frameDelayMilliseconds = 700)
     {
         if (imagePaths.Count < 2) throw new ArgumentException("GIF membutuhkan minimal dua foto.", nameof(imagePaths));
-        int delayHundredths = Math.Clamp((int)Math.Round(frameDelayMilliseconds / 10d), 2, 600);
+        // Kept in the API for future encoder replacement; WPF GifBitmapEncoder does not
+        // expose a reliable per-frame delay API through its public surface.
+        _ = frameDelayMilliseconds;
         var encoder = new GifBitmapEncoder();
         foreach (var path in imagePaths)
         {
             if (!File.Exists(path)) throw new FileNotFoundException("Salah satu foto GIF tidak ditemukan.", path);
             var frame = LoadBitmap(path);
-            var metadata = new BitmapMetadata("gif");
-            metadata.SetQuery("/grctlext/Delay", (ushort)delayHundredths);
-            metadata.SetQuery("/grctlext/Disposal", (byte)2);
-            encoder.Frames.Add(
-    BitmapFrame.Create(frame, null, metadata, null)
-);
+            // Use the universally supported BitmapFrame overload. The encoder writes
+            // each image frame; delay metadata is not guaranteed by WPF's GIF encoder.
+            encoder.Frames.Add(BitmapFrame.Create(frame));
         }
 
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outputPath))!);

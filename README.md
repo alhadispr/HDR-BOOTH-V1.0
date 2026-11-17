@@ -265,3 +265,8 @@ Moving Polaroid AR otomatis **belum diimplementasikan** pada v0.20. Fitur ini me
 - Artivive export gallery rows display package status and saved artwork URL from the manifest.
 - The existing gallery search and open-file workflow remains available.
 - The selected original photo is used as the trigger target to avoid using the same composite layout image for every slot.
+
+
+## Perbaikan build
+
+Catatan perbaikan dan status validasi source terbaru: [`docs/BUILD-FIXES-AND-VALIDATION.md`](docs/BUILD-FIXES-AND-VALIDATION.md).
