@@ -91,9 +91,9 @@ public partial class FrameEditorWindow : Window
             {
                 Width = Math.Max(0, w * Math.Clamp(slot.Width, 0, 100) / 100),
                 Height = Math.Max(0, h * Math.Clamp(slot.Height, 0, 100) / 100),
-                Stroke = new SolidColorBrush(Color.FromRgb(217, 45, 58)),
+                Stroke = new SolidColorBrush(System.Windows.Media.Color.FromRgb(217, 45, 58)),
                 StrokeThickness = 2,
-                Fill = new SolidColorBrush(Color.FromArgb(35, 217, 45, 58)),
+                Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(35, 217, 45, 58)),
                 StrokeDashArray = new DoubleCollection { 4, 2 }
             };
             Canvas.SetLeft(rect, w * Math.Clamp(slot.X, 0, 100) / 100);
