@@ -201,7 +201,7 @@ LayoutSlotsPanel.Children.Add(slot);
         }
         catch (Exception ex)
         {
-            MessageBox.Show(
+            System.Windows.MessageBox.Show(
                 $"Folder penyimpanan event tidak dapat ditulis. Periksa izin folder atau lokasi penyimpanan.\\n\\nDetail: {ex.Message}",
                 "HDR BOOTH — Pemeriksaan Sesi", MessageBoxButton.OK, MessageBoxImage.Error);
             return false;
@@ -211,7 +211,7 @@ LayoutSlotsPanel.Children.Add(slot);
             ? "Pemeriksaan selesai. Sesi siap dimulai."
             : "Pemeriksaan sebelum sesi:\\n\\n• " + string.Join("\\n• ", warnings);
 
-        var result = MessageBox.Show(
+        var result = System.Windows.MessageBox.Show(
             report + "\\n\\nLanjutkan ke sesi foto?",
             "HDR BOOTH — Pemeriksaan Sesi",
             MessageBoxButton.YesNo,
@@ -286,7 +286,7 @@ LayoutSlotsPanel.Children.Add(slot);
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Capture gagal: {ex.Message}", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Error);
+            System.Windows.MessageBox.Show($"Capture gagal: {ex.Message}", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         finally
         {
@@ -320,7 +320,7 @@ LayoutSlotsPanel.Children.Add(slot);
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Tidak dapat mengulang foto: {ex.Message}", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Warning);
+            System.Windows.MessageBox.Show($"Tidak dapat mengulang foto: {ex.Message}", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 
