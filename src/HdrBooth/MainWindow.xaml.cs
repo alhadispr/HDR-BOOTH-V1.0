@@ -126,7 +126,7 @@ dialog.Content = panel;
     {
         if (EventsGrid.SelectedItem is not EventProfile selected)
         {
-            MessageBox.Show("Pilih acara yang ingin diatur terlebih dahulu.", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
+            System.Windows.MessageBox.Show("Pilih acara yang ingin diatur terlebih dahulu.", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
         var dialog = new EventSettingsWindow(selected) { Owner = this };
@@ -179,7 +179,7 @@ dialog.Content = panel;
         }
         await _store.SetActiveAsync(_events, selected);
         await RefreshAsync();
-        MessageBox.Show($"{selected.Name} sekarang menjadi event aktif.", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
+        System.Windows.MessageBox.Show($"{selected.Name} sekarang menjadi event aktif.", "HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     private async void OpenBoothDisplay_Click(object sender, RoutedEventArgs e)
