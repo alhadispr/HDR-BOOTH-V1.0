@@ -35,7 +35,7 @@ public sealed class WindowsPrintService
         bitmap.EndInit();
         bitmap.Freeze();
 
-        var dialog = new System.Windows.Controls.PrintDialog. { UserPageRangeEnabled = false };
+        var dialog = new System.Windows.Controls.PrintDialog { UserPageRangeEnabled = false };
         if (!string.IsNullOrWhiteSpace(printerName))
         {
             using var server = new LocalPrintServer();
