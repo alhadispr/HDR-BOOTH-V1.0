@@ -37,7 +37,7 @@ public partial class MainWindow : Window
     {
         if (EventsGrid.SelectedItem is not EventProfile selected)
         {
-            MessageBox.Show("Pilih event terlebih dahulu. Galeri ditampilkan berdasarkan event yang dipilih.",
+            System.Windows.MessageBox.Show("Pilih event terlebih dahulu. Galeri ditampilkan berdasarkan event yang dipilih.",
                 "Galeri HDR BOOTH", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
@@ -71,14 +71,44 @@ public partial class MainWindow : Window
         var dialog = new Window { Title = "Buat Acara Baru", Width = 420, Height = 210,
             WindowStartupLocation = WindowStartupLocation.CenterOwner, Owner = this,
             ResizeMode = ResizeMode.NoResize, Background = System.Windows.Media.Brushes.White };
-        var panel = new StackPanel { Margin = new Thickness(22) };
-        panel.Children.Add(new TextBlock { Text = "Nama acara", FontWeight = FontWeights.SemiBold, Margin = new Thickness(0,0,0,8) });
-        var nameBox = new TextBox { Height = 34, Padding = new Thickness(8), FontSize = 14 };
-        panel.Children.Add(nameBox);
-        var save = new Button { Content = "Simpan Acara", Background = System.Windows.Media.Brushes.IndianRed,
-            Foreground = System.Windows.Media.Brushes.White, Margin = new Thickness(0,18,0,0), HorizontalAlignment = HorizontalAlignment.Right };
-        save.Click += (_, _) => { if (!string.IsNullOrWhiteSpace(nameBox.Text)) dialog.DialogResult = true; };
-        panel.Children.Add(save); dialog.Content = panel;
+        var panel = new System.Windows.Controls.StackPanel
+{
+    Margin = new System.Windows.Thickness(22)
+};
+
+panel.Children.Add(new System.Windows.Controls.TextBlock
+{
+    Text = "Nama acara",
+    FontWeight = System.Windows.FontWeights.SemiBold,
+    Margin = new System.Windows.Thickness(0, 0, 0, 8)
+});
+
+var nameBox = new System.Windows.Controls.TextBox
+{
+    Height = 34,
+    Padding = new System.Windows.Thickness(8),
+    FontSize = 14
+};
+
+panel.Children.Add(nameBox);
+
+var save = new System.Windows.Controls.Button
+{
+    Content = "Simpan Acara",
+    Background = System.Windows.Media.Brushes.IndianRed,
+    Foreground = System.Windows.Media.Brushes.White,
+    Margin = new System.Windows.Thickness(0, 18, 0, 0),
+    HorizontalAlignment = System.Windows.HorizontalAlignment.Right
+};
+
+save.Click += (_, _) =>
+{
+    if (!string.IsNullOrWhiteSpace(nameBox.Text))
+        dialog.DialogResult = true;
+};
+
+panel.Children.Add(save);
+dialog.Content = panel;
         if (dialog.ShowDialog() == true)
         {
             var profile = new EventProfile { Name = nameBox.Text.Trim() };
