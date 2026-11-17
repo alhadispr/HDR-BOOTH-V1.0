@@ -1,0 +1,35 @@
+name: Build HDR BOOTH (Windows)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore NuGet packages
+        run: dotnet restore src/HdrBooth/HdrBooth.csproj
+
+      - name: Publish self-contained Windows x64
+        shell: pwsh
+        run: ./scripts/build-windows.ps1
+
+      - name: Upload Windows EXE package
+        uses: actions/upload-artifact@v4
+        with:
+          name: HDR-BOOTH-win-x64
+          path: |
+            artifacts/HDR-BOOTH-win-x64/
+            artifacts/HDR-BOOTH-win-x64.zip
+          if-no-files-found: error
+          retention-days: 14
