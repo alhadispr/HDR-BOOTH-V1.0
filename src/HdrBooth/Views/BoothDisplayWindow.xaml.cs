@@ -344,7 +344,7 @@ LayoutSlotsPanel.Children.Add(slot);
     private void AnimateCountdownPulse()
     {
         var scale = new System.Windows.Media.ScaleTransform(0.82, 0.82);
-        CameraCountdownOverlayText.RenderTransformOrigin = new Point(0.5, 0.5);
+        CameraCountdownOverlayText.RenderTransformOrigin = new System.Windows.Point(0.5, 0.5);
         CameraCountdownOverlayText.RenderTransform = scale;
         var animation = new DoubleAnimation(0.82, 1.0, TimeSpan.FromMilliseconds(260))
         {
