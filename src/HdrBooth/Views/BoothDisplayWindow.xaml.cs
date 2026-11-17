@@ -406,8 +406,14 @@ LayoutSlotsPanel.Children.Add(slot);
             image.EndInit();
             image.Freeze();
 
-            var card = new StackPanel { Width = 132, Margin = new Thickness(5) };
-            card.Children.Add(new Image { Source = image, Width = 120, Height = 90, Stretch = System.Windows.Media.Stretch.UniformToFill });
+            var card = new System.Windows.Controls.StackPanel { Width = 132, Margin = new Thickness(5) };
+            card.Children.Add(new System.Windows.Controls.Image
+{
+    Source = image,
+    Width = 120,
+    Height = 90,
+    Stretch = System.Windows.Media.Stretch.UniformToFill
+});
             card.Children.Add(new TextBlock { Text = $"FOTO {index + 1}", Foreground = System.Windows.Media.Brushes.White, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0, 4, 0, 4) });
             var replaceButton = new Button { Content = "ULANGI FOTO", Padding = new Thickness(7, 4, 7, 4), Tag = index };
             replaceButton.Click += RetakeSpecificPhoto_Click;
