@@ -57,13 +57,22 @@ public partial class EventSettingsWindow : Window
         GifCheck.IsChecked = s.EnableGif; LivePhotoCheck.IsChecked = s.EnableLivePhoto; MovingPolaroidCheck.IsChecked = s.EnableMovingPolaroid;
     }
 
-    private static void SelectCombo(ComboBox combo, string value)
+    private static void SelectCombo(System.Windows.Controls.ComboBox combo, string value)
+{
+    foreach (System.Windows.Controls.ComboBoxItem item in combo.Items)
     {
-        foreach (ComboBoxItem item in combo.Items)
-            if (string.Equals(item.Content?.ToString(), value, StringComparison.OrdinalIgnoreCase)) { combo.SelectedItem = item; return; }
-        combo.SelectedIndex = 0;
+        if (string.Equals(item.Content?.ToString(), value, StringComparison.OrdinalIgnoreCase))
+        {
+            combo.SelectedItem = item;
+            return;
+        }
     }
-    private static string ComboValue(ComboBox combo) => (combo.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? "";
+
+    combo.SelectedIndex = 0;
+}
+
+private static string ComboValue(System.Windows.Controls.ComboBox combo) =>
+    (combo.SelectedItem as System.Windows.Controls.ComboBoxItem)?.Content?.ToString() ?? "";
     private static int Number(string value, int fallback, int min, int max) => int.TryParse(value, out var n) ? Math.Clamp(n, min, max) : fallback;
 
     private void Save_Click(object sender, RoutedEventArgs e)
